@@ -1,12 +1,20 @@
 package com.cursor.wh7;
 
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class AssemblyOfSongs {
     /**
      * Created by Vasyl Kachala on 10.07.2019.
      */
-    public static void menuCase() {
+
+    /**
+     * Create method menuCase Calculate the total number of words in the text:
+     * @throws IOException
+     */
+    public static void menuCase() throws IOException {
+        FileCountingNumber fileCountingNumber = new FileCountingNumber();
         System.out.println("*************Songs Option*************");
         System.out.println("1 Calculate the total number of words in the text");
         System.out.println("2 Calculate the number of words that need to be excluded");
@@ -18,8 +26,12 @@ public class AssemblyOfSongs {
         do {
             switch (switchCase) {
                 case 1:
+                    fileCountingNumber.calculateTheTotalNumber();
+                    System.out.println("*************Program End*************");
                     break;
                 case 2:
+                    fileCountingNumber.calculateSwearWordsLengthThree();
+                    System.out.println("*************Program End*************");
                     break;
                 case 3:
                     break;
