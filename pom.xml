@@ -6,7 +6,7 @@
     <groupId>com.cursor.wh7</groupId>
     <artifactId>wh7</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <!--<packaging>jar</packaging>-->
+    <packaging>jar</packaging>
 
     <name>wh7</name>
     <url>http://maven.apache.org</url>

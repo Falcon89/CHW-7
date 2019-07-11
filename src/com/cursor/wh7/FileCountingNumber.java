@@ -5,12 +5,7 @@ import java.util.*;
 
 
 public class FileCountingNumber {
-//    FileReader file = new FileReader("src\\com\\cursor\\wh7\\Songs.txt");
-    private static final String FILE = "src\\com\\cursor\\wh7\\Songs.txt";
-    //    FileInputStream fileStream = new FileInputStream(file);
-//    InputStreamReader input = new InputStreamReader(fileStream);
-//    FileWriter fileWriter = new FileWriter(input);
-//    BufferedReader reader = new BufferedReader(input);
+    private static final String FILE = "Songs.txt";
     BufferedReader reader = new BufferedReader(new FileReader(FILE));
 
     public FileCountingNumber() throws FileNotFoundException {
@@ -52,8 +47,7 @@ public class FileCountingNumber {
     }
 
     public void calculateWordsToExclude() throws IOException {
-        ArrayList<String> wordsArray = new ArrayList<>();
-
+        ArrayList<String> wordsArray = new ArrayList<String>();
         String lineCalculateTWO2;
         int searchBadly = 0;
         int lengthMinThree = 0;
@@ -61,13 +55,19 @@ public class FileCountingNumber {
         while ((lineCalculateTWO2 = reader.readLine()) != null) {
             if (lineCalculateTWO2.contains("badly") || (lineCalculateTWO2.length() <= 2)) {
                 searchBadly++;
-                wordsArray.add(lineCalculateTWO2);
+            }
+            String b = lineCalculateTWO2;
+            String s[] = b.split(" ");
+            int i;
+            for (i = 0; i < s.length; i++) {
+                if (s[i].equals("badly") || (s[i].length() <= 2)) {
+                    wordsArray.add(s[i]);
+                }
             }
             calcWords = searchBadly + lengthMinThree;
         }
-
         System.out.println(wordsArray);
-        System.out.println("Number of all deleted words " + calcWords);
+        System.out.println("Number of all deleted words and add in ArrayList" + calcWords);
         reader.close();
         System.exit(0);
     }
