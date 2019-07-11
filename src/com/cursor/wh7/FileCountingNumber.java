@@ -1,13 +1,16 @@
 package com.cursor.wh7;
 
 import java.io.*;
+import java.util.*;
 
 
 public class FileCountingNumber {
-    File file = new File("src\\com\\cursor\\wh7\\Songs.txt");
-    FileInputStream fileStream = new FileInputStream(file);
-    InputStreamReader input = new InputStreamReader(fileStream);
-    BufferedReader reader = new BufferedReader(input);
+    FileReader file = new FileReader("src\\com\\cursor\\wh7\\Songs.txt");
+    //    FileInputStream fileStream = new FileInputStream(file);
+//    InputStreamReader input = new InputStreamReader(fileStream);
+//    FileWriter fileWriter = new FileWriter(input);
+//    BufferedReader reader = new BufferedReader(input);
+    BufferedReader reader = new BufferedReader(file);
 
     public FileCountingNumber() throws FileNotFoundException {
     }
@@ -28,17 +31,16 @@ public class FileCountingNumber {
     }
 
     public void calculateSwearWordsLengthThree() throws IOException {
-        String words;
+        String lineCalculate;
         int swearWordsLengthThree = 0;
-        while ((words = reader.readLine()) != null) {
-            if (words.contains("badly")) {
+        while ((lineCalculate = reader.readLine()) != null) {
+
+            if (lineCalculate.contains("badly")) {
                 continue;
-            }
-            if (3 >= words.length()) {
+            } else if (lineCalculate.length() <= 2) {
                 continue;
-            }
-            if (!(words.equals(""))) {
-                String[] totalNumber = words.split("\\s+");
+            } else if ((!lineCalculate.equals(""))) {
+                String[] totalNumber = lineCalculate.split("\\s+");
                 swearWordsLengthThree += totalNumber.length;
             }
         }
@@ -47,14 +49,110 @@ public class FileCountingNumber {
         System.exit(0);
 
     }
-//        File file = new File("src\\com\\cursor\\wh7\\Songs.txt");
-//        try(Scanner sc = new Scanner(new FileInputStream(file))){
-//            int count=0;
-//            while(sc.hasNext()){
-//                sc.next();
-//                count++;
-//            }
-//            System.out.println("Number of words: " + count);
-//        }
 
+    public void calculateWordsToExclude() throws IOException {
+        ArrayList<String> wordsArray = new ArrayList<>();
+
+        String lineCalculateTWO2;
+        int searchBadly = 0;
+        int lengthMinThree = 0;
+        int calcWords = 0;
+        while ((lineCalculateTWO2 = reader.readLine()) != null) {
+            if (lineCalculateTWO2.contains("badly")||(lineCalculateTWO2.length() <= 2)) {
+                searchBadly++;
+                wordsArray.add(lineCalculateTWO2);
+            }
+            calcWords = searchBadly + lengthMinThree;
+        }
+
+        System.out.println(wordsArray);
+        System.out.println("Number of all deleted words " + calcWords);
+        reader.close();
+        System.exit(0);
+    }
+
+    public static void calculateTheMostWords2() {
+
+    }
+
+
+    private static String[] w = null;
+    private static int[] r = null;
+
+    public void calculateTheMostWords() throws IOException {
+
+
+        try {
+            System.out.println("Enter 'n' value :: ");
+            Scanner in = new Scanner(System.in);
+            int n = in.nextInt();
+            w = new String[n];
+            r = new int[n];
+//            FileReader fr = new FileReader("src\\com\\cursor\\wh7\\Songs.txt");
+//            BufferedReader br = new BufferedReader(fr);
+            String text = "";
+            String sz = null;
+            while ((sz = reader.readLine()) != null) {
+                text = text.concat(sz);
+            }
+            String[] words = text.split(" ");
+            String[] uniqueLabels;
+            int count = 0;
+            uniqueLabels = getUniqLabels(words);
+            for (int j = 0; j < n; j++) {
+                r[j] = 0;
+            }
+            for (String l : uniqueLabels) {
+                if ("".equals(l) || null == l) {
+                    break;
+                }
+                for (String s : words) {
+                    if (l.equals(s)) {
+                        count++;
+                    }
+                }
+
+                for (int i = 0; i < n; i++) {
+                    if (count > r[i]) {
+                        r[i] = count;
+                        w[i] = l;
+                        break;
+                    }
+                }
+                count = 0;
+            }
+            display(n);
+        } catch (Exception e) {
+            System.err.println("ERR " + e.getMessage());
+        }
+    }
+
+    public static void display(int n) {
+        for (int k = 0; k < n; k++) {
+            System.out.println("Label :: " + w[k] + "\tCount :: " + r[k]);
+        }
+    }
+
+    private static String[] getUniqLabels(String[] keys) {
+        String[] uniqueKeys = new String[keys.length];
+        uniqueKeys[0] = keys[0];
+        int uniqueKeyIndex = 1;
+        boolean keyAlreadyExists = false;
+
+        for (int i = 1; i < keys.length; i++) {
+            for (int j = 0; j <= uniqueKeyIndex; j++) {
+                if (keys[i].equals(uniqueKeys[j])) {
+                    keyAlreadyExists = true;
+                }
+            }
+            if (!keyAlreadyExists) {
+                uniqueKeys[uniqueKeyIndex] = keys[i];
+                uniqueKeyIndex++;
+            }
+            keyAlreadyExists = false;
+        }
+        return uniqueKeys;
+    }
 }
+
+
