@@ -5,12 +5,13 @@ import java.util.*;
 
 
 public class FileCountingNumber {
-    FileReader file = new FileReader("src\\com\\cursor\\wh7\\Songs.txt");
+//    FileReader file = new FileReader("src\\com\\cursor\\wh7\\Songs.txt");
+    private static final String FILE = "src\\com\\cursor\\wh7\\Songs.txt";
     //    FileInputStream fileStream = new FileInputStream(file);
 //    InputStreamReader input = new InputStreamReader(fileStream);
 //    FileWriter fileWriter = new FileWriter(input);
 //    BufferedReader reader = new BufferedReader(input);
-    BufferedReader reader = new BufferedReader(file);
+    BufferedReader reader = new BufferedReader(new FileReader(FILE));
 
     public FileCountingNumber() throws FileNotFoundException {
     }
@@ -58,7 +59,7 @@ public class FileCountingNumber {
         int lengthMinThree = 0;
         int calcWords = 0;
         while ((lineCalculateTWO2 = reader.readLine()) != null) {
-            if (lineCalculateTWO2.contains("badly")||(lineCalculateTWO2.length() <= 2)) {
+            if (lineCalculateTWO2.contains("badly") || (lineCalculateTWO2.length() <= 2)) {
                 searchBadly++;
                 wordsArray.add(lineCalculateTWO2);
             }
