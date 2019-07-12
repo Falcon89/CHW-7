@@ -10,7 +10,7 @@ public class AssemblyOfSongs {
      */
 
     /**
-     * Create method menuCase Calculate the total number of words in the text:
+     * Created method menuCase described options
      * @throws IOException
      */
     public static void menuCase() throws IOException {
@@ -19,7 +19,7 @@ public class AssemblyOfSongs {
         System.out.println("1 Calculate the total number of words in the text");
         System.out.println("2 Inappropriate words or words that are less than 3 characters long will not be taken into account");
         System.out.println("3 Calculate the number of words that need to be excluded");
-        System.out.println("4 Outcome N most frequently encountered words");
+        System.out.println("4 All the most common (repeated) words in decreasing order");
         System.out.println("*************End Songs Option*************");
         System.out.println("5 Exit");
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +39,8 @@ public class AssemblyOfSongs {
                     System.out.println("*************Program End*************");
                     break;
                 case 4:
-                    fileCountingNumber.calculateTheMostWords();
+                    fileCountingNumber.sortTheMostRepeatedWords();
+//                    fileCountingNumber.
                     break;
                 case 5:
                     System.exit(0);
