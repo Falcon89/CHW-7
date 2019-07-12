@@ -3,7 +3,6 @@ package com.cursor.wh7;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class AssemblyOfSongs {
     /**
      * Created by Vasyl Kachala on 10.07.2019.
