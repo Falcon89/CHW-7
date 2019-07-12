@@ -6,7 +6,7 @@ import java.util.*;
  * Created by Vasyl Kachala on 11.07.2019.
  */
 public class FileCountingNumber {
-    private static final String FILE = "Songs.txt";
+    private static final String FILE = "src\\resources\\Songs.txt";
     BufferedReader reader = new BufferedReader(new FileReader(FILE));
     private static String lineCalc;
     int words = 0;

@@ -1,5 +1,4 @@
-.idea
-/src/.idea/
-/out
 *.iml
-**.iml
+.idea
+out
+target
