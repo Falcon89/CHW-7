@@ -39,7 +39,6 @@ public class AssemblyOfSongs {
                     break;
                 case 4:
                     fileCountingNumber.sortTheMostRepeatedWords();
-//                    fileCountingNumber.
                     break;
                 case 5:
                     System.exit(0);
