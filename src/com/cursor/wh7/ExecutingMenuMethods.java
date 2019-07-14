@@ -5,62 +5,64 @@ import java.util.*;
 /**
  * Created by Vasyl Kachala on 11.07.2019.
  */
-public class FileCountingNumber {
-    private static final String FILE = "src\\resources\\Songs.txt";
+public class ExecutingMenuMethods {
+    private static final String FILE = "src/resources/Songs.txt";
     BufferedReader reader = new BufferedReader(new FileReader(FILE));
-    private static String lineCalc;
-    int get = 0;
-    int rs = 0;
+    private static String line;
+    int s = 0;
+    int n = 0;
 
-    public FileCountingNumber() throws FileNotFoundException {
+    public ExecutingMenuMethods() throws FileNotFoundException {
+    }
+    public void filleConnect(){
     }
     /**
-     * Created method calculateTheTotalNumber Calculate the total number of get in the text
+     * Created method calculateTheTotalNumber Calculate the total number of s in the text
      * @throws IOException
      */
     public void calculateTheTotalNumber() throws IOException {
-        while ((lineCalc = reader.readLine()) != null) {
-            if (!(lineCalc.equals(""))) {
-                String[] totalNumber = lineCalc.split("\\s+");
-                get += totalNumber.length;
+        while ((line = reader.readLine()) != null) {
+            if (!(line.equals(""))) {
+                String[] totalNumber = line.split("\\s+");
+                s += totalNumber.length;
             }
         }
-        System.out.println("Total number of get and file = " + get);
+        System.out.println("Total number of s and file = " + s);
         reader.close();
         System.exit(0);
     }
     /**
      * Created method calculateSwearWordsLengthThree
-     * Inappropriate get or get that are less than 3 characters long will not be taken into account
+     * Inappropriate s or s that are less than 3 characters long will not be taken into account
      * @throws IOException
      */
     public void calculateSwearWordsLengthThree() throws IOException {
-        while ((lineCalc = reader.readLine()) != null) {
-            if (lineCalc.contains("badly")) {
+        while ((line = reader.readLine()) != null) {
+            if (line.contains("badly")) {
                 continue;
-            } else if (lineCalc.length() <= 2) {
+            } else if (line.length() <= 2) {
                 continue;
-            } else if ((!lineCalc.equals(""))) {
-                String[] totalNumber = lineCalc.split("\\s+");
-                get += totalNumber.length;
+            } else if ((!line.equals(""))) {
+                String[] totalNumber = line.split("\\s+");
+                s += totalNumber.length;
             }
         }
-        System.out.println("Total number of get and file = " + get);
+        System.out.println("Total number of s and file = " + s);
         reader.close();
         System.exit(0);
     }
     /**
      * Created method calculateWordsToExclude
-     * Count the number of get that need to be deleted and write them in a separate array
+     * Count the number of s that need to be deleted and write them in a separate array
      * @throws IOException
      */
     public void calculateWordsToExclude() throws IOException {
         ArrayList<String> wordsArray = new ArrayList<String>();
-        while ((lineCalc = reader.readLine()) != null) {
-            if (lineCalc.contains("badly") || (lineCalc.length() <= 2)) {
-                rs++;
+        while ((line = reader.readLine()) != null) {
+            if (line.contains("badly") || (line.length() <= 2)) {
+                n++;
             }
-            String b = lineCalc;
+            String b = line;
             String s[] = b.split(" ");
             int i;
             for (i = 0; i < s.length; i++) {
@@ -68,23 +70,23 @@ public class FileCountingNumber {
                     wordsArray.add(s[i]);
                 }
             }
-            get = rs;
+            this.s = n;
         }
         System.out.println(wordsArray);
-        System.out.println("Number of all deleted get and add in ArrayList " + get);
+        System.out.println("Number of all deleted s and add in ArrayList " + s);
         reader.close();
         System.exit(0);
     }
 
     /**
-     * Created method sortTheMostRepeatedWords  See the most common get.
+     * Created method sortTheMostRepeatedWords  See the most common s.
      * Added sorting for convenience. From higher value to lowest value
      * @throws IOException
      */
     public void sortTheMostRepeatedWords() throws IOException {
         HashMap<String, Integer> wordsCounMap = new HashMap<>();
-        while ((lineCalc = reader.readLine()) != null) {
-            String[] words = lineCalc.toLowerCase().split(" ");
+        while ((line = reader.readLine()) != null) {
+            String[] words = line.toLowerCase().split(" ");
             for (String word : words) {
                 if (wordsCounMap.containsKey(word)) {
                     wordsCounMap.put(word, wordsCounMap.get(word) + 1);
@@ -92,7 +94,7 @@ public class FileCountingNumber {
                     wordsCounMap.put(word, 1);
                 }
             }
-            lineCalc = reader.readLine();
+            line = reader.readLine();
         }
         Set<Map.Entry<String, Integer>> entrySet = wordsCounMap.entrySet();
         List<Map.Entry<String, Integer>> list = new ArrayList<>(entrySet);
