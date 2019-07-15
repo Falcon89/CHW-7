@@ -1,14 +1,15 @@
 package com.cursor.wh7;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ServiceUtils {
+public class ShowMainMenu {
     /**
-     * Created method caseUtils described options
+     * Created method printInfo described options
      * @throws IOException
      */
-    public static void caseUtils() throws IOException {
+    public static void printInfo() {
         System.out.println("*************Songs Option*************");
         System.out.println("1 Calculate the total number of s in the text");
         System.out.println("2 Inappropriate s or s that are less than 3 characters long will not be taken into account");
@@ -21,25 +22,46 @@ public class ServiceUtils {
      * Created method switchUtils described switch
      * @throws IOException
      */
-    public static void switchUtils() throws IOException {
-        ExecutingMenuMethods executingMenuMethods = new ExecutingMenuMethods();
+    public static void switchUtils(){
+        ExecutingMenuMethods executingMenuMethods = null;
+        try {
+            executingMenuMethods = new ExecutingMenuMethods();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         Scanner scanner = new Scanner(System.in);
         int switchCase = scanner.nextInt();
         switch (switchCase) {
             case 1:
-                executingMenuMethods.calculateTheTotalNumber();
+                try {
+                    executingMenuMethods.calculateTheTotalNumber();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("*************Program End*************");
                 break;
             case 2:
-                executingMenuMethods.calculateSwearWordsLengthThree();
+                try {
+                    executingMenuMethods.calculateSwearWordsLengthThree();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("*************Program End*************");
                 break;
             case 3:
-                executingMenuMethods.calculateWordsToExclude();
+                try {
+                    executingMenuMethods.calculateWordsToExclude();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("*************Program End*************");
                 break;
             case 4:
-                executingMenuMethods.sortTheMostRepeatedWords();
+                try {
+                    executingMenuMethods.sortTheMostRepeatedWords();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 System.out.println("Error case");

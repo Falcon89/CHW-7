@@ -9,12 +9,10 @@ public class ExecutingMenuMethods {
     private static final String FILE = "src/resources/Songs.txt";
     BufferedReader reader = new BufferedReader(new FileReader(FILE));
     private static String line;
-    int s = 0;
-    int n = 0;
+    private int s = 0;
+    private int n = 0;
 
     public ExecutingMenuMethods() throws FileNotFoundException {
-    }
-    public void filleConnect(){
     }
     /**
      * Created method calculateTheTotalNumber Calculate the total number of s in the text
@@ -48,7 +46,11 @@ public class ExecutingMenuMethods {
             }
         }
         System.out.println("Total number of s and file = " + s);
-        reader.close();
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
     /**
@@ -74,7 +76,11 @@ public class ExecutingMenuMethods {
         }
         System.out.println(wordsArray);
         System.out.println("Number of all deleted s and add in ArrayList " + s);
-        reader.close();
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
 
@@ -94,7 +100,11 @@ public class ExecutingMenuMethods {
                     wordsCounMap.put(word, 1);
                 }
             }
-            line = reader.readLine();
+            try {
+                line = reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         Set<Map.Entry<String, Integer>> entrySet = wordsCounMap.entrySet();
         List<Map.Entry<String, Integer>> list = new ArrayList<>(entrySet);
