@@ -27,7 +27,6 @@ public class ExecutingMenuMethods {
         }
         System.out.println("Total number of sum and file = " + sum);
         reader.close();
-        System.exit(0);
     }
     /**
      * Created method calculateSwearWordsLengthThree
@@ -51,7 +50,6 @@ public class ExecutingMenuMethods {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.exit(0);
     }
     /**
      * Created method calculateWordsToExclude
@@ -81,7 +79,6 @@ public class ExecutingMenuMethods {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.exit(0);
     }
 
     /**
