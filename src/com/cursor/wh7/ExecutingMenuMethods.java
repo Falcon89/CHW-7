@@ -9,29 +9,29 @@ public class ExecutingMenuMethods {
     private static final String FILE = "src/resources/Songs.txt";
     BufferedReader reader = new BufferedReader(new FileReader(FILE));
     private static String line;
-    private int s = 0;
-    private int n = 0;
+    private int sum = 0;
+    private int number = 0;
 
     public ExecutingMenuMethods() throws FileNotFoundException {
     }
     /**
-     * Created method calculateTheTotalNumber Calculate the total number of s in the text
+     * Created method calculateTheTotalNumber Calculate the total number of sum in the text
      * @throws IOException
      */
     public void calculateTheTotalNumber() throws IOException {
         while ((line = reader.readLine()) != null) {
             if (!(line.equals(""))) {
                 String[] totalNumber = line.split("\\s+");
-                s += totalNumber.length;
+                sum += totalNumber.length;
             }
         }
-        System.out.println("Total number of s and file = " + s);
+        System.out.println("Total number of sum and file = " + sum);
         reader.close();
         System.exit(0);
     }
     /**
      * Created method calculateSwearWordsLengthThree
-     * Inappropriate s or s that are less than 3 characters long will not be taken into account
+     * Inappropriate sum or sum that are less than 3 characters long will not be taken into account
      * @throws IOException
      */
     public void calculateSwearWordsLengthThree() throws IOException {
@@ -42,10 +42,10 @@ public class ExecutingMenuMethods {
                 continue;
             } else if ((!line.equals(""))) {
                 String[] totalNumber = line.split("\\s+");
-                s += totalNumber.length;
+                sum += totalNumber.length;
             }
         }
-        System.out.println("Total number of s and file = " + s);
+        System.out.println("Total number of sum and file = " + sum);
         try {
             reader.close();
         } catch (IOException e) {
@@ -55,14 +55,14 @@ public class ExecutingMenuMethods {
     }
     /**
      * Created method calculateWordsToExclude
-     * Count the number of s that need to be deleted and write them in a separate array
+     * Count the number of sum that need to be deleted and write them in a separate array
      * @throws IOException
      */
     public void calculateWordsToExclude() throws IOException {
         ArrayList<String> wordsArray = new ArrayList<String>();
         while ((line = reader.readLine()) != null) {
             if (line.contains("badly") || (line.length() <= 2)) {
-                n++;
+                number++;
             }
             String b = line;
             String s[] = b.split(" ");
@@ -72,10 +72,10 @@ public class ExecutingMenuMethods {
                     wordsArray.add(s[i]);
                 }
             }
-            this.s = n;
+            this.sum = number;
         }
         System.out.println(wordsArray);
-        System.out.println("Number of all deleted s and add in ArrayList " + s);
+        System.out.println("Number of all deleted sum and add in ArrayList " + sum);
         try {
             reader.close();
         } catch (IOException e) {
@@ -85,7 +85,7 @@ public class ExecutingMenuMethods {
     }
 
     /**
-     * Created method sortTheMostRepeatedWords  See the most common s.
+     * Created method sortTheMostRepeatedWords  See the most common sum.
      * Added sorting for convenience. From higher value to lowest value
      * @throws IOException
      */
